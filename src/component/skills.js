@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
-import Table from 'react-bootstrap/Table'
+import React, { Component } from 'react';
+import Table from 'react-bootstrap/Table';
+
+import axios from 'axios';
 
 export class skills extends Component {
 
@@ -8,84 +10,71 @@ export class skills extends Component {
         this.state = {
             fName: localStorage.getItem('fName'),
             lName: localStorage.getItem('lName'),
-            users: []
+            isLoading: true,
+            errors: null
         }
 
     }
 
-    // componentDidMount() {
-    //     fetch('https://jsonplaceholder.typicode.com/posts')
-    //         .then(response => response.json())
-    //         .then(json => this.setState({ users: json.data }));
+    getPosts() {
+        axios
+            .get("https://jsonplaceholder.typicode.com/posts")
+            .then(response => {
+                this.setState({
+                    posts: response.data,
+                    isLoading: false
+                });
+            })
+            .catch(error => this.setState({ error, isLoading: false }));
+    }
 
-    //         // console.log("data is")
-    // }
+    componentDidMount() {
+        this.getPosts();
+    }
+
 
 
     render() {
-        const nameD = {
-            color: 'red',
-            textTransform: "uppercase"
-        };
-
+        const { isLoading, posts } = this.state;
+        console.log(this.state.lname)
 
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm-12">
-                        <h1 className="fade alert alert-success show">Welcom to dashboard Mr. <b style={nameD}>{this.state.fName} {this.state.lName}</b></h1>
-                    </div>
-                </div>
+            <React.Fragment>
+                <h2> welcome to Dashboard <b> {this.state.fname} {this.state.fname} </b>  </h2>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Title</th>
+                            <th>body</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+               
+                            {!isLoading ? (
+                                posts.map(post => {
+                                    const { id, title, body } = post;
+                                    return (
+                                        <tr key={id}>                                           
+                                            <td>{id}</td>
+                                            <td>{title}</td>
+                                            <td>{body}</td>
+                                        </tr>
+                                      
+                                    );
+                                })
+                            ) : (
+                                    <p>Loading...</p>
+                                )}
+                        
+                     
+                    </tbody>
+                </Table>
 
-                <div className="row">
-                    <div className="col-sm-12">
-
-                    {/* {   
-                       
-                        this.state.users.map(user => (
-                           <h1> {user.title}</h1>
-
-                   
-                            ))
-                         
-                    } */}
-
-
-                        {/* <Table striped bordered hover size="sm">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Username</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td colSpan="2">Larry the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                            </tbody>
-                        </Table> */}
-                    </div>
-                </div>
-
-            </div>
-        )
+            </React.Fragment>
+        );
     }
+
 }
 
 export default skills
