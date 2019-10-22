@@ -16,6 +16,9 @@ export class skills extends Component {
 
     }
 
+   
+
+
     getPosts() {
         axios
             .get("https://jsonplaceholder.typicode.com/posts")
@@ -32,15 +35,35 @@ export class skills extends Component {
         this.getPosts();
     }    
 
+    // handleChange = event => {
+    //     this.setState({ filter: event.target.value });
+    //    };
+
 
 
     render() {
         const { isLoading, posts } = this.state;
-        console.log(this.state.lname)
+       console.log(this.state.filter);
+
+        // const lowercasedFilter = filter.toLowerCase();
+        // const filteredData = this.state.posts.filter(item => {
+        //     return Object.keys(item).some(key =>
+        //         item[key].toLowerCase().includes(lowercasedFilter)
+        //     );
+        // });
+        
 
         return (
             <React.Fragment>
                 <h2> Welcome to Dashboard <b> {this.state.fName} {this.state.lName} </b>  </h2>
+
+                {/* <input value={filter} onChange={this.handleChange} />
+
+                <div >
+                    {this.state.filter}
+                </div> */}
+
+                
                 <Table striped bordered hover>
                     <thead>
                         <tr>

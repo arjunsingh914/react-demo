@@ -7,6 +7,7 @@ import Header from './component/Header';
 import home from './component/home';
 import skills from './component/skills';
 import about from './component/about';
+import jsonData from './component/jsonData';
 
 
 
@@ -33,6 +34,7 @@ class App extends Component {
         <Route exact path="/" component={home} />
         <Route path="/about" component={about} />
         <Route path="/skills" component={skills} />
+        <Route path="/jsonData" component={jsonData} />
 
 
         {/* <Switch>

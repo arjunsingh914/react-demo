@@ -17,3 +17,31 @@ b{
   text-transform: uppercase;
   color:red;
 }
+
+span.delete {
+  background: red;
+  height: 10px;
+  width: 10px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.section {
+  width: 100%;
+  float: left;
+}
+.section ul {
+  margin: 0;
+    padding: 0;
+
+}
+
+.section ul li{
+  list-style: none;
+
+}
+
+hr{
+  display: inline-block;
+  width: 100%;
+}
