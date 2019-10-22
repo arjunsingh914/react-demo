@@ -30,7 +30,7 @@ export class skills extends Component {
 
     componentDidMount() {
         this.getPosts();
-    }
+    }    
 
 
 
@@ -40,7 +40,7 @@ export class skills extends Component {
 
         return (
             <React.Fragment>
-                <h2> welcome to Dashboard <b> {this.state.fname} {this.state.fname} </b>  </h2>
+                <h2> Welcome to Dashboard <b> {this.state.fName} {this.state.lName} </b>  </h2>
                 <Table striped bordered hover>
                     <thead>
                         <tr>

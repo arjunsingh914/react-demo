@@ -41,11 +41,6 @@ export class home extends Component {
         }else if(this.state.lName !== "singh" || this.state.lName === " " ){
             alert("please enter valid password")
         }
-        
-        // this.setState = {
-        //     fName:this.state.fName,
-        //     lName:this.state.lName
-        // }
 
         const { fName, lName } = this.state; //destructuring
         
@@ -61,21 +56,21 @@ export class home extends Component {
         return (
             <div>
                 <div className="container">
-                    <h1>hello</h1>
+                    <h1>Login</h1>
                     {/* <h1>{fName}</h1>   */}
                     <div className="row">
-                        <div className="col-sm-6">
+                        <div className="col-sm-12">
                             <form onSubmit={this.handleSubmit}>
                                 <div className="inputrow">
-                                    <label>Your name</label>
-                                    <input type="text" placeholder="Enter Name" name="fName" onChange={this.handleInputchange} />
+                                    <label>First name</label>
+                                    <input type="text" placeholder="Enter first Name" name="fName" onChange={this.handleInputchange} />
                                 </div>
 
                                 <div className="inputrow">
-                                    <label>Your name</label>
-                                    <input type="text" placeholder="Enter Name" name="lName" onChange={this.handleInputchange} />
+                                    <label>Last name</label>
+                                    <input type="text" placeholder="Enter last Name" name="lName" onChange={this.handleInputchange} />
                                 </div>
-                                <div className="inputrow">
+                                <div className="inputrow text-center">
                                     <button type="submit" className="btn btn-primary"> Submit</button>
                                 </div>
                             </form>

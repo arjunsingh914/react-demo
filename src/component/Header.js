@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 //   float:"right",
 //   borderRadius:"50%",
 //   border:"1px solid #a99a9a"
-// }
+// }   
 
 class Header extends Component {
 

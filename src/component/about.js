@@ -9,7 +9,7 @@ export class about extends Component {
                   <h1>{this.hello} about page</h1>
                 <p>about page</p>
 
-            </div>
+            </div>   
         )
     }
 }
